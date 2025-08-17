@@ -8,6 +8,10 @@
 import AVFAudio
 
 protocol RhythmAudioPlayer {
+    
+    var audioBuffer: AVAudioPCMBuffer? { get }
+
+    var onBufferUpdate: ((AVAudioPCMBuffer?) -> Void)? { get set }
 
     func play()
 
@@ -120,7 +124,7 @@ class RhythmViewModel: RhythmAudioPlayer {
         audio = nil
     }
 
-    // MARKL - Stop
+    // MARK: - Stop
     func stop() {
         if (audioEngine.isRunning) {
             audioEngine.stop()
