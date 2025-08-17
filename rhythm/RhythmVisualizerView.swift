@@ -9,7 +9,15 @@ import AVFAudio
 import Accelerate
 import UIKit
 
-class RhythmVisualizerView: UIView {
+protocol RhythmVisualizer: UIView {
+    
+    var buffer: AVAudioPCMBuffer? { get set }
+    
+    func updateBuffer(_ buffer: AVAudioPCMBuffer?)
+    
+}
+
+class RhythmVisualizerView: UIView, RhythmVisualizer {
 
     var buffer: AVAudioPCMBuffer?
 

@@ -19,7 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = UINavigationController(rootViewController: RhythmViewController(
-            viewModel: RhythmViewModel()
+            viewModel: RhythmViewModel(),
+            visualizer: RhythmVisualizerView()
         ))
         window?.makeKeyAndVisible()
     }
