@@ -10,11 +10,11 @@ import UIKit
 
 class RhythmViewController: UIViewController {
 
-    var viewModel: RhythmAudioPlayer
+    var audioPlayer: RhythmAudioPlayer
     var visualizer: RhythmVisualizer
     
-    init(viewModel: RhythmAudioPlayer, visualizer: RhythmVisualizer) {
-        self.viewModel = viewModel
+    init(audioPlayer: RhythmAudioPlayer, visualizer: RhythmVisualizer) {
+        self.audioPlayer = audioPlayer
         self.visualizer = visualizer
         super.init(nibName: nil, bundle: nil)
     }
@@ -24,14 +24,13 @@ class RhythmViewController: UIViewController {
     }
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         visualizer.backgroundColor = .clear
         visualizer.translatesAutoresizingMaskIntoConstraints = false
 
-        viewModel.onBufferUpdate = { buffer in
+        audioPlayer.onBufferUpdate = { buffer in
             guard let buffer = buffer else { return }
 
             DispatchQueue.main.async {
@@ -82,15 +81,15 @@ class RhythmViewController: UIViewController {
     }
 
     @objc func uploadAudio() {
-        viewModel.upload()
+        audioPlayer.upload()
     }
 
     @objc func playAudio() {
-        viewModel.play()
+        audioPlayer.play()
     }
 
     @objc func pauseAudio() {
-        viewModel.pause()
+        audioPlayer.pause()
     }
 
 }

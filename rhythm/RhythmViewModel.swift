@@ -25,7 +25,7 @@ protocol RhythmAudioPlayer {
 
 }
 
-class RhythmViewModel: RhythmAudioPlayer {
+class RhythmAudioController: RhythmAudioPlayer {
 
     var audio: AVAudioFile?
 
